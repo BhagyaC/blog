@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Matrix</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/docker.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Special Kinds of Matrices and Vectors</h1>
+            <h3>Notes from Deep Learning by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</h3>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on February 9, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><span style="font-weight: 400;">Following are some matrices and vectors which are useful for understanding deep learning concepts</span></p>
+          <ul>
+          <li><strong><strong>Diagonal Matrix&nbsp;</strong></strong></li>
+          </ul>
+          <p><span style="font-weight: 400;">Matrices, in which all elements are zero except in the main diagonal line</span></p>
+          <p><span style="font-weight: 400;">ie:</span><span style="font-weight: 400;"> Dij = 0 for all i≭j</span></p>
+          <p><span style="font-weight: 400;">The identity matrix is a diagonal matrix where all the elements are 1</span></p>
+          <p><span style="font-weight: 400;">diag(v) means a diagonal matrix whose diagonal elements are denoted by a vector</span></p>
+          <p><span style="font-weight: 400;">The good characteristics of the diagonal matrices are their computational efficiency on multiple actions</span></p>
+          <code>
+          <li><span style="font-weight: 400;">eg)</span><span style="font-weight: 400;"> diag(v)x = v๏x</span><span style="font-weight: 400;"> also the inverse of diag(v) is also efficient</span></li>
+          </code>
+          <p><span style="font-weight: 400;">While deriving machine learning algorithms we can restrict matrices to diagonal and make the process less expensive as well as descriptive</span></p>
+          <p><span style="font-weight: 400;">There are rectangular diagonal matrices as well.Albeit they don&rsquo;t have an inverse, matrix multiplication is cheaper as scaring the matrix by x time ( either making it more taller or wider by a factor of x)&nbsp; in Dx&nbsp;</span></p>
+          
+          <ul>
+          <li><strong><strong>Symmetric Matrix</strong></strong></li>
+          </ul>
+          <p><span style="font-weight: 400;">When a matrix is equal to its transpose it is known as symmetric.&nbsp;</span></p>
+          <p><span style="font-weight: 400;">Symmetric Matrix is created by functions with two arguments and was the order of arguments won&rsquo;t affect the final result ( also known as a symmetric function)</span></p>
+          <ul>
+          <li><strong><strong>Unit vector</strong></strong></li>
+          </ul>
+        
+          <p><span style="font-weight: 400;">Unit vector is a vector with unit norm&nbsp;</span></p>
+       
+          <p><span style="font-weight: 400;">some back ground information about norms - norms are function we use to measure the size of the vector. The norms with </span><span style="font-weight: 400;">L</span><span style="font-weight: 400;">p</span><span style="font-weight: 400;"> are functions mapping vectors into a non-negative values</span></p>
+          <p><span style="font-weight: 400;">L</span><span style="font-weight: 400;">2 </span><span style="font-weight: 400;">is known as </span><em><span style="font-weight: 400;">Euclidean norm</span></em></p>
+          
+          <ul>
+          <li><strong><strong>Orthogonal vector</strong></strong></li>
+          </ul>
+          
+          <p><span style="font-weight: 400;">If two vectors are orthogonal to each other then</span> <span style="font-weight: 400;">x</span><span style="font-weight: 400;">T</span><span style="font-weight: 400;">y = 0</span></p>
+          <p><span style="font-weight: 400;">If both the vectors have a non zero norm then it means there are perpendicular to each other. If two vectors are not only perpendicular to each other and has a unit norm then they known as </span><em><span style="font-weight: 400;">orthonorma</span></em><span style="font-weight: 400;">l</span></p>
+          <p><span style="font-weight: 400;">An orthogonal matrix is a square matrix whose rows are mutually orthonor- mal and whose columns are mutually orthonormal</span></p>
+          <p><span style="font-weight: 400;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span style="font-weight: 400;">&nbsp; A</span><span style="font-weight: 400;">-1</span><span style="font-weight: 400;"> = </span><span style="font-weight: 400;">A</span><span style="font-weight: 400;">T</span></p>
+          <p><span style="font-weight: 400;">As the inverse of the orthogonal vectors are very cheap to compute they have very much demand ( side note : as we know inorder to solve the problem of finding weights of the features we need to solve the equation and the most challenging part of that is finding the inverse of the matrix if the features are orthogonal it is very easy)&nbsp;</span></p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
