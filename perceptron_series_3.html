@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Perceptrons</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/neural_network.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Perceptrons: Learning Algorithms(Proof)</h1>
+            <h2>Chapter 3</h2>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on February 20, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><span style="font-weight: 400;">Let us learn this algorithm step by step &hellip;</span></p>
+<p><span style="font-weight: 400;">It is given that X &rarr; Input and W &rarr; weight, moreover they are producing binary output Y which is either 0 or 1.</span></p>
+<p><span style="font-weight: 400;"><math>V= W<sup>T</sup>X  </math>&nbsp; &lt; 0</span> <span style="font-weight: 400;">which will classify to class 1 that is Y=0 else it will be classified into class Y=1</span></p>
+<p><span style="font-weight: 400;">For each induced field (V) that has been calculated we check with their actual output, and if they are matching we won&rsquo;t correct it otherwise we have to fix it 👨‍🏫</span></p>
+<p><span style="font-weight: 400;">Assume the scenario where we got V as 0 whereas in the actual case it was 1. Now we know that we have to update the weights</span></p>
+<p><span style="font-weight: 400;">&nbsp;&nbsp;W&rsquo; = W + &Delta; W</span></p>
+<p><span style="font-weight: 400;">But how are we choosing &Delta; W?? 🤔&nbsp;</span></p>
+<p><span style="font-weight: 400;">Let us see&hellip;</span></p>
+<p><span style="font-weight: 400;">The new induces local field will be </span><math>V&rsquo;= W&rsquo;<sup>T</sup>X  </math></p>
+<p><span style="font-weight: 400;">So the question is should we increase the local field or decrease it. If we are taking the scenario that we pictured earlier we know that we have to increase it&nbsp;</span></p>
+<p><span style="font-weight: 400;">Then the equation will be</span></p>
+<p><span style="font-weight: 400;">V'-V= <math>W&rsquo;<sup>T</sup>X </math>- <math>W<sup>T</sup>X </math> = <math>&Delta;W<sup>T</sup>X</math> &gt;0 </span></p>
+<p><span style="font-weight: 400;">For a given vector the easiest way to choose <math>&Delta;W<sup>T</sup>X</math> &gt;0</span> <span style="font-weight: 400;">is&nbsp; &nbsp; &nbsp; </span><span style="font-weight: 400;">&Delta;W</span><span style="font-weight: 400;">= X</span></p>
+<p><span style="font-weight: 400;">To avoid the big jumps in weights in the range of input we(actually Rosenblatt did 🙈)&nbsp; introduced a new term </span><strong>&eta;</strong></p>
+<p><span style="font-weight: 400;">&Delta;W</span><span style="font-weight: 400;">= &eta;X&nbsp; , &eta; &gt;0</span></p>
+<p><span style="font-weight: 400;"><math>&Delta;W<sup>T</sup>X</math><span style="font-weight: 400;">= &eta;<math>X<sup>T</sup>X</math></span> &gt;0</span></p>
+<p><span style="font-weight: 400;">W</span><span style="font-weight: 400;">'</span><span style="font-weight: 400;">= W+&eta;X</span></p>
+<p><span style="font-weight: 400;">But assume the scenario we considered was another way around then we have to reduce the weights rather than increasing them. Hence the equation that we derived right now will change as</span></p>
+<p><span style="font-weight: 400;">W</span><span style="font-weight: 400;">'</span><span style="font-weight: 400;">= W-&eta;X</span></p>
+<blockquote class="blockquote"> To recapitulate, If the actual label was 1 and perceptron miscalculated it to 0 then we will improve weights, on the other hand, if the actual label was 0 and perceptron miscalculated it as 1 we will decrease the weights</blockquote>
+<p><span style="font-weight: 400;">For the sake of creating a uniform equation, we need an error (</span><strong>e </strong><span style="font-weight: 400;">) where&nbsp;</span></p>
+<p><em><span style="font-weight: 400;"><strong>e = actual output - calculated output&nbsp;</span></em></p>
+<p><span style="font-weight: 400;">So let us look into the Perceptron learning algorithms here</span></p>
+<p><span style="font-weight: 400;">Y(n) is calculated by passing the induced local field into a delimiter</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/algo.png" alt="">
+</a>
+<p><span style="font-weight: 400;">Before completing this chapter let us have a peek into the </span><strong>Perceptron Convergence Theorem by Rosenblatt 1962</strong><span style="font-weight: 400;">&nbsp;</span></p>
+<p><span style="font-weight: 400;">Grey part&nbsp; If C1 and C2 (the classes) are linearly separable, then the perceptron training algorithm &ldquo;converges&rdquo; in the sense that after a finite number of steps, </span><strong><em>the synaptic weights </em></strong><span style="font-weight: 400;">remain unchanged and the perceptron correctly classified all elements of the training set</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/converge.png" alt="">
+</a>
+<p><span style="font-weight: 400;">Rosenblatt took another 4 years to prove this mathematically that also for the conditions W(1) =0 and &eta;=1</span></p>
+<p><span style="font-weight: 400;">If you feel like you need that proof as well in the coming chapters let me know by clicking the button here <button type="button" onClick="onClick()">👍</button>
+  <a id="clicks">0</a>
+  <script type="text/javascript">
+    var clicks = 0;
+
+    function onClick() {
+      clicks += 1;
+      document.getElementById("clicks").innerHTML = clicks;
+    };
+    </script></span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">PS: That proof is too beautiful to skip ( 😬) </span></p></div>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
