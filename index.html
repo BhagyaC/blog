@@ -84,16 +84,17 @@
             <a href="#">Bhagya C</a>
             on February 7,2021</p>
         </div>
-        <script type="text/javascript">
-          var clicks = 0;
-          function click() {
+        
+          <button type="button" onClick="onClick()">😍</button>
+          <a id="clicks">0</a>
+          <script type="text/javascript">
+            var clicks = 0;
+  
+            function onClick() {
               clicks += 1;
               document.getElementById("clicks").innerHTML = clicks;
-          };
-          </script>
-          <button type="button" onClick="click()">😍</button>
-          <a id="clicks">0</a>
-
+            };
+            </script>
         <div class="post-preview">
           <a href="perceptron_series_1.html">
             <h2 class="post-title">
