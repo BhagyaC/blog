@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Perceptrons</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/neural_network.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Activation Functions and Decision Boundaries</h1>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on February 25, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><span style="font-weight: 400;">So far we have been discussing the single-layer perceptrons ( also known as the primitive neural network) and during my discussion with my friend how we can relate the decision boundary and the activation function. That really got me thinking 🧐 &hellip; Actually I knew that the derivative of the activation function has something to do with the decision boundary but don't know more about it 😬.Anyway at least I know when we assign the induced local field to zero we can calculate the decision boundary ( provided the threshold we consider is zero).&nbsp;</span></p>
+
+<p><span style="font-weight: 400;">Let us demystify the impacts of activation functions on the decision boundary 👩‍💻</span></p>
+
+<p><span style="font-weight: 400;">We know the threshold (Ө) based approach we select for activation functions they also known as Heaviside step functions and it produces a binary output.</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/unit.png" alt="">
+</a>
+<p><span style="font-weight: 400;">The main idea of checking the activation functions are differentiable or not comes from the context of the multilayer neural network. The backpropagation algorithm that trains the NN uses the derivatives of the activation function as a multiplier to update weights. The non-linear activation function helps to create a non-linear decision boundary to separate the original data</span></p>
+<p><span style="font-weight: 400;">Check the pictorial representation on how the sigmoid function creates a complex decision boundary on the non linear data.</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/sig1.png" alt="">
+  <img class="img-fluid" src="img/sig2.png" alt="">
+</a>
+<p><span style="font-weight: 400;">But it does not our actual question..Let us dig in deeper 🕵️‍♀️</span></p>
+<p><span style="font-family:courier;font-weight: 400;">What is the decision boundary? In a statistical classification problem with two classes, a decision boundary or decision surface is a hypersurface that partitions the underlying vector space into two sets. A decision boundary is the region of the problem space in which the output label of a classifier is ambiguous.</span></p>
+<p><span style="font-family:courier;font-weight: 400;">If the decision surface is a hyperplane then the classification problem is linear and classes are linearly separable.</span></p>
+<p><span style="font-family:courier;font-weight: 400;">Also in geometry, a hyperplane is a subspace whose dimension is one less than that of its ambient space. If space is 3D then its hyperplanes are 2D planes, similarly, for 2D it will be a 1D line( All thanks to Wikipedia)&nbsp;</span></p>
+<p><span style="font-weight: 400;">And again how a non-linear activation function gives a hyperplane that separates classes linearly?😓</span></p>
+<p><span style="font-weight: 400;">Here we have only one set of input and one set of weights right? To draw the hyperplane being created with that just solve <strong> <mark>X.w = threshold </mark></strong>( which I kind of address earlier 🤭)&nbsp;</span></p>
+<p><span style="font-weight: 400;">However, if you add in hidden layers, you no longer necessarily have a hyperplane, as in order to be a hyperplane it must be able to be expressed as the "solution of a single algebraic equation of degree 1." Which clearly says that the hyperplane is linear. To solve more complex transfer functions or more complex networks for non-linearly separable problems.</span></p>
+
+<p><span style="font-weight: 400;">Let us take an example of the sigmoid function,&nbsp;</span></p>
+<p><span style="font-weight: 400;">In the case of a primitive perceptron, the equations will be as follows</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/sigm1.png" alt="">
+</a>
+<p><span style="font-weight: 400;">So now let us look into the weights being calculated</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/sigmh1.png" alt="">
+</a>
+<p><span style="font-weight: 400;">If the value is above 0.5 then the perceptron will classify into 1, conversely, if the value is below 0.5 then it classifies it to 0. So the decision boundary is at 0.5. To find the hyperplane or decision boundary equate the output to 0.5 and check whether it is a linear equation of degree 1.</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/sigmh2.png" alt="">
+  <img class="img-fluid" src="img/sigmh3.png" alt="">
+</a>
+<p><span style="font-weight: 400;">Although my drawing skills not up to the mark, I explained the concepts.</span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">If you still have doubts don&rsquo;t worry as I always say we are learning together&hellip;.at some point of time, we will figure it out.</span></p>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/bhagya-c/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
