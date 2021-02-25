@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Perceptrons</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    .column {
+      float: left;
+      width: 50%;
+      padding: 5px;
+    }
+    
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    
+  
+    </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/neural_network.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Linear Regression and Introduction to Multilayer Perceptron</h1>
+            <h2>Chapter 4</h2>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on February 25, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p><span style="font-weight: 400;">As we discussed in previous chapters, the simple perceptron can only solve linear problems . Whether it be a classification problem or a regression problem the process has to be close to linear model.</span></p>
+          <p><span style="font-weight: 400;">I forgot that we did not discuss about the regression models earlier. I quickly cover that too in this chapter, albeit our main discussion point is MLP. If you have not read the previous chapter please have a look that will help you to understand this blog more easily <a href = perceptron_series_2.html> 🔖</a></span></p>
+          <p><span style="font-weight: 400;"><strong> Regression Problem</span></p>
+            <a href="#">
+              <img class="img-fluid" src="img/reg1.png" alt="">
+              <img class="img-fluid" src="img/reg3.png" alt="">
+              <img class="img-fluid" src="img/reg2.png" alt="">
+            </a>
+        
+          <p><span style="font-weight: 400;">What are we trying to do here? Unlike classification problems here there is no final classes and the final outputs are continuous. Each time when we calculate expected value we have to check how close are to the atual value, that measure is known as clost function.</span></p>
+          <a href="#">
+            <img class="img-fluid" src="img/cost1.png" alt="">
+            <img class="img-fluid" src="img/cost2.png" alt="">
+          </a>
+          <p><span style="font-weight: 400;">The idea is to reduce the cost function to zero, or the partial derivative of the cost function with respect to weights should be zero ( ideally, the error will remain zero and the weights will reach to a constant value after certain iterations )&nbsp;</span></p>
+      
+          <p><span style="font-weight: 400;">For simple models we can directly solve the partial derivatives and for bigger problems it will not be the case. Then comes the</span><strong> Iterative descent algorithms, </strong><span style="font-weight: 400;">where we will do some initial guesses for the w(0) and change the weights in different iterations and will make sure that the new weights being calculated has a lesser cost value than the previous one.</span></p>
+      
+          <p><span style="font-weight: 400;">One of the known descent algorithm is Steepest Descent / Gradient Descent where successive adjustment applied to the weight vector w are in the direction of the steepest descent ( a direction opposite to the gradient vector &nabla; E(w)&nbsp; )</span></p>
+          <a href="#">
+            <img class="img-fluid" src="img/desc1.png" alt="">
+            <img class="img-fluid" src="img/desc2.png" alt="">
+          </a>
+          <p><span style="font-weight: 400;">Here the &eta; is a positive constant called the stepsize of learning rate, there is a condition such that the value of &eta; should be sufficiently small to make the algorithm work.</span></p>
+          <p><span style="font-weight: 400;">And for the error calculation we can use Least mean square or a linear least square ( LMS requires much less memory space and can be updated with new data easily)&nbsp;</span></p>
+          <p><span style="font-weight: 400;">To address why are we using the squared versions rather than the absolute value function because, absolute values are not smooth , the reason we are calculating there in the first place is to get the minimum of this function right? So if we have a smooth graph it will help us to achieve that</span></p>
+          <p><span style="font-weight: 400;">There is a interesting maths part ( proof on selecting the cost function and how exactly the descent algorithms are working ect) for regression part. I am not include those if you are interested in those things please let me know. We can look into that as well 👻</span></p>
+          <p><span style="font-weight: 400;">So coming back to our actual discussion.. Now we know regardless of whether it is a classification problem or a regression problem inorder to address that using a single perceptron the problem statement needs to be linear ( sinusoid functions won&rsquo;t work here)</span></p>
+          
+          <p><span style="font-weight: 400;">Minsky has attacked the accountability of perceptron because of the same reason but Rosenblatt could not answer it because he got killed in a boat accident 😢</span></p>
+          <p><span style="font-weight: 400;">After 17 years David Rumelhart introduced if we connect multiple perceptron we can address even non linear problems statement</span></p>
+      
+          <div class="row">
+            <div class="column">
+              <img class="img-fluid" src="img/david.png" alt="" >
+            </div>
+            <div class="column">
+              <blockquote class="blockquote">He obtained his B.A. in psychology and mathematics in 1963 at the University of South Dakota. He received his Ph. D. in mathematical psychology at Stanford University in 1967. From 1967 to 1987 he served on the faculty of the Department of Psychology at the University of California, San Diego.The PDP group was led by David Rumelhart and Jay McClelland at UCSD. They became dissatisfied with symbol-processing machines, and embarked on a more ambitious &ldquo;connectionist&rdquo; program.&nbsp;</blockquote>
+            </div>
+            
+          </div>
+          <p><span style="font-weight: 400;">As we know XOR was the attacking question against the single perceptron. David showed that when we connect multiple layers the input space transformed into another space (y1,y2) such that they become linearly&nbsp; separable.</span></p>
+          <a href="#">
+            <img class="img-fluid" src="img/xor1.png" alt="">
+          </a>
+          <p><span style="font-weight: 400;">From the given two lines we can construct two perceptrons for two seperate decision boundaries</span></p>
+          <a href="#">
+            <img class="img-fluid" src="img/xor2.png" alt="">
+          </a>
+          <p><span style="font-weight: 400;">Assume what would happen if we combine these two perceptrons together</span></p>
+          <a href="#">
+            <img class="img-fluid" src="img/xor3.png" alt="">
+            <img class="img-fluid" src="img/xor4.png" alt="">
+          </a>
+          <p><span style="font-weight: 400;">See how easily we addressed the XOR problem. If we can address this non-linearity multilayer perceptrons can address even more complicated functions.</span></p>
+          <p><span style="font-weight: 400;">How do they learn then? There is an algorithm called Back propagation algorithm which was a break through in the research of NN and we will discuss more about those in coming chapters</span></p>
+    </div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/bhagya-c/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
