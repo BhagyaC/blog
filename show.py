@@ -8,4 +8,4 @@ msg = str(form.getvalue("msg"))
 fle = form['filename']
 
 fn = os.path.basename(fle.filename)
-open("/Users/bhagya/Desktop/my_blog/blog/messages"+fn, "wb").write(fle.file.read())
+open("/blog/messages"+fn, "wb").write(fle.file.read())
