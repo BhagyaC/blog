@@ -2,6 +2,39 @@
 <html lang="en">
 
 <head>
+  <style>
+    sub {
+        vertical-align: sub;
+        font-size: smaller;
+        color: brown;
+        
+        font-family: cursive;
+        animation: glow 1s ease-in-out infinite alternate;
+        
+    }
+    sup {
+        vertical-align: super;
+        font: smaller;
+        color: brown;
+    }
+    .glow {
+      font-size: 80px;
+      color: #fff;
+      text-align: center;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+    
+    @-webkit-keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      }
+      
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+</style>
+
   <link rel="icon" type="image/png" href="img/favicon.ico">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -50,49 +83,56 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/neural_network.png')">
+  <header class="masthead" style="background-image: url('img/seq2seq/NLP.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1>Perceptrons: History</h1>
-            <h2>Chapter 1</h2>
-            <span class="meta">Posted by
-              <a href="#">Bhagya C</a>
-              on February 9, 2021</span>
+          <div class="page-heading">
+            <h1>Software Engineering: Series</h1>
+            <span class="subheading">It is important to learn some software engineering concept to become a excellent AI Engineer </span>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p><span style="font-weight: 400;">Well, we have been looking into multiple machine learning concept.. I&nbsp; know we have not covered not even 1% of things that we have to learn, however, I think along with learning machine engineering concepts it is equally important to learn a little bit of software engineering as well as object-oriented programming concepts. This will be like an add on while making your code production-ready. Which I regret not learning earlier..&nbsp;</span></p>
-
-<p><span style="font-weight: 400;">Anyway, as someone said in the past &ldquo; BETTER LATE THAN NEVER&rdquo;. So let us stop procrastinating any longer and look into some basics. Also, I wanted to add a series of algorithmic concepts which we can do in some other series blogs 🤪.</span></p>
-
-<p><span style="font-weight: 400;">As I mentioned in the title, let us look into some Object-Oriented Programming Concepts for Python.</span></p>
-
-<ol>
-<li><strong> Classes and Instances</strong></li>
-</ol>
-
-<p><span style="font-weight: 400;">&nbsp;The reason for using classes not only in python but in most modern programming languages is that it helps us to logically group our data and function and increase their reusability.</span></p>
-
-<p><span style="font-weight: 400;">Let us consider an example of a company if we have common functions and characteristics for each of them then it will be easier for us to manage them as well as deal as the number of employees in the company increases.</span></p>
-
-<p><span style="font-weight: 400;">Let us try creating some employee class then</span></p></div>
-
-    
-</div>
-<script src="https://gist.github.com/BhagyaC/6972d25f4e887cc6b4abfb37bf4abb84.js"></script> 
-    </div>
-  </article>
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+          <a href="python_oops_1.html">
+            <h2 class="post-title">
+              Object Oriented Python
+            </h2>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">Bhagya C</a>
+            on April 30,2021</p>
+        </div>
+        <!--
+        <div class="post-preview">
+          <a href="transformers1.html">
+            <h2 class="post-title">
+              Attention all you Need ( But it is hard to get 😂 )
+            </h2>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">Bhagya C</a>
+            on March 26,2021</p>
+        </div>
+        <div class="post-preview">
+          <a href="bert.html">
+            <h2 class="post-title">
+              BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+              <sub>New</sub></h2>
+          </a>
+          <p class="post-meta">Posted by
+            <a href="#">Bhagya C</a>
+            on April 16,2021</p>
+        </div>
+        -->
 
   <hr>
 
@@ -110,6 +150,7 @@
                 </span>
               </a>
             </li>
+           
             <li class="list-inline-item">
               <a href="https://github.com/BhagyaC/">
                 <span class="fa-stack fa-lg">
@@ -136,6 +177,10 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="js/jqBootstrapValidation.js"></script>
+  <script src="js/contact_me.js"></script>
 
   <!-- Custom scripts for this template -->
   <script src="js/clean-blog.min.js"></script>
