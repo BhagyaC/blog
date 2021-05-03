@@ -57,10 +57,10 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
             <h1>Python:OOP</h1>
-            <h2>Chapter 1</h2>
+            <h2>Chapter 2</h2>
             <span class="meta">Posted by
               <a href="#">Bhagya C</a>
-              on May 3, 2021</span>
+              on May 4, 2021</span>
           </div>
         </div>
       </div>
@@ -72,49 +72,28 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p><span style="font-weight: 400;">Well, we have been looking into multiple machine learning concept.. I&nbsp; know we have not covered not even 1% of things that we have to learn, however, I think along with learning machine engineering concepts it is equally important to learn a little bit of software engineering as well as object-oriented programming concepts. This will be like an add on while making your code production-ready. Which I regret not learning earlier..&nbsp;</span></p>
-
-<p><span style="font-weight: 400;">Anyway, as someone said in the past &ldquo; BETTER LATE THAN NEVER&rdquo;. So let us stop procrastinating any longer and look into some basics. Also, I wanted to add a series of algorithmic concepts which we can do in some other series blogs 🤪.</span></p>
-
-<p><span style="font-weight: 400;">As I mentioned in the title, let us look into some Object-Oriented Programming Concepts for Python.</span></p>
-
-<ol>
-<li><strong> Classes and Instances</strong></li>
-</ol>
-
-<p><span style="font-weight: 400;">&nbsp;The reason for using classes not only in python but in most modern programming languages is that it helps us to logically group our data and function and increase their reusability.</span></p>
-
-<p><span style="font-weight: 400;">Let us consider an example of a company if we have common functions and characteristics for each of them then it will be easier for us to manage them as well as deal as the number of employees in the company increases.</span></p>
-
-<p><span style="font-weight: 400;">Let us try creating some employee class then</span></p></div>
-
+          
+            
+            <p><span style="font-weight: 400;">Well we convered topics on variables now we are moving to the bigger topics like methods.</span></p>
+            <p><span style="font-weight: 400;">Before we go into those intense topics assume that you want to keep track of how many employees are there in the class ( or which refers to the organisation). For that we can create an class variable num_of_emps and intialise then to 0 and within the init method ( which is called whenever an object is created we can increment the Employee.num_of_emps by one [ The reason being that we are not using self here is that there are no use cases where we need to set the count in the instance variable to override. The class variable will give the constant idea.</span></p>
+         
+            <p><span style="font-weight: 400;">Now let us look into </span><strong>Regular Methods, Class methods and Static Methods</strong><span style="font-weight: 400;">&nbsp;</span></p>
+           
+            <p><span style="font-weight: 400;">The </span><strong>Regular Methods </strong><span style="font-weight: 400;">&nbsp;in the class automatically takes the instance as the first variable ( which is self by conventions). The idea of </span><strong>&nbsp;a Class method </strong><span style="font-weight: 400;">&nbsp;is that instead of an instance it will automatically take a class as a frist argument. To convert a regular method to a class method it is easy to add a decorator on top of the function definition. &ldquo;@classmethod&rdquo;. Check the code snippet below to see how a class method is created. Although we know that the first argument is class we cannot use the term so we renamed it to cls ( which was also possible in the earlier condition but we just followed the conventions as we always do 🙃 )</span></p>
+            <p><span style="font-weight: 400;">They say that we can use class methods as alternative constructors- by which they mean that we can use the class methods to use to provide multiple ways to create objects.</span></p>
+            <p><span style="font-weight: 400;">For example, where the employee info in the form of string separated by hyphens. So before creating the object they have to parse the string. Is there anyway to pass the string as such to create instances.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">Check the example in the colab. The realtime example of the same use case that we encounter is with the datetime module. Where there are different ways to create the datetime ( means different ways of input and for each cases there are different class methods</span></p>
+            <p><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Now we can look into the </span><strong>Static Methods</strong><span style="font-weight: 400;"> most of the time people will get confused with static methods and class methods. But the case is in static method there is no argument passed automatically, neither the instance nor the class.&nbsp;</span></p>
+            <p><span style="font-weight: 400;">&nbsp;Assume there are some functions that make sense to the class but not necessarily related to the instance or the class variables then we can make it as a static method.&nbsp;</span></p>
+          
+            <p><span style="font-weight: 400;">For example, consider you want to pass a data and check whether it is a workday or not. So here in this example it does not deal with any of our class variables or instance variables. Hence we can make it as a static method. Check the colab for the example</span></p>
+            
     </div>
-    <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/6972d25f4e887cc6b4abfb37bf4abb84.js"></script> </span></p></div>
+    </div>
+    <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/40e3aaa2cf2abbaa6d46db3e8a7ae6ba.js"></script> </span></p></div>
 
     
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
 
-      <strong> 2. Class Variables&nbsp;</strong></li>
-
-     
-      <p><span style="font-weight: 400;">We learned about how to create instance variable and they are unique to instances. As in our code the first and last . But we did not mention about class variables, and let us look into those. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Class varialbles are shared among all the instances in the class. Class variable should be same for each instance. Consider our example, our company raise and it should be same for each variable.&nbsp;</span></p>
-      <p><span style="font-weight: 400;">Let us look into the code and understand</span></p>
-      
-        </div>
-  </div>
-  <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/7feafb70d5dba1b1e1b1d801f3b6d5f6.js"></script> </span></p></div>
-
-</div>
-  </div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <p><span style="font-weight: 400;">And that is a wrap for our first session please go through the topics and try to implement the examples by yourself. Then next blog will be a continuation and stay tuned</span></p>    </div>
-  </div>
-</div>
 
     
 
