@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Bhagya's Blogs</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background/python.jpeg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Python:OOP</h1>
+            <h2>Chapter 2</h2>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on May 4, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          
+            
+          <p><span style="font-weight: 400;">In this blog, we will be addressing the concepts of python class inheritance</span></p>
+          <p><strong>Inheritance</strong></p>
+          <p><span style="font-weight: 400;">Inheritance allows us to inherit attribute and methods from a parent class. We can create as many subclasses as we want and we can override them with our use cases and it will not affect the parent class at all.</span></p>
+          <p><span style="font-weight: 400;">Let us demystify the concepts using our example class Employee. As we know we have a parent class, now think of a scenario where within an organisation there will be multiple employees( affiliated to different job roles), examples, developers and managers. These are good candidates for subclasses because they possess all the class attributes and the instance attribute that we defined in the parent class. So the inheritance is a concept where we don&rsquo;t have to copy and paste all the codes necessary for the subclass we can just simply inherit.</span></p>
+          <p><span style="font-weight: 400;">While creating a subclass, followed by the class name definition within the parentheses we have to define which is the parent class it will inherit from. </span><span style="font-weight: 400;"><br /><br /></span></p>
+          <p><span style="font-weight: 400;">There is something called help function and if we put the class details in that it will return the all necessary details about that class.</span></p>
+          <a href="#">
+            <img class="img-fluid" src="img/softwareengg/help-subclass.png" alt="">
+          </a>
+          <p><span style="font-weight: 400;">Let us look into how to customise our subclasses.</span></p>
+          <p><span style="font-weight: 400;">Assume that we have to improve the raise in the Developers. If you now call the apply raise function it will use the common raise amount of 4% ( 1.04 ) and if you want to set that to say 10 percent only thing that you have to do is modify the value in the subclass.</span></p>
+          <p><span style="font-weight: 400;">Assume that we have to modify the functions too, for example in the init function itself for Developer class we need to provide the programming language too what we will do then?</span></p>
+          <p><span style="font-weight: 400;">Just recreate the init method and those things are in the parent class can be added by either calling the super function or accessing the parent class and passing the attributes and then define the instance variables unique to the subclass and handle them</span></p>
+          <p><span style="font-weight: 400;">Some interesting note is that you can pass the list of the subcalss instances as arguments to another for example&nbsp;</span></p>
+          <p><span style="font-weight: 400;">If you create another subclass as manager&nbsp; and the attribute to the subclass could be the list of Developer instances { while passing the instances as arguments </span><span style="font-weight: 400;">we never pass the mutable data types like list or dict as difault arguments we assign it to None) </span><span style="font-weight: 400;">and we can run the function in them too</span></p>
+          <p><span style="font-weight: 400;">Some more interesting facts are there are two inbuild functions in isinstance() will tell us the an instance is related to the class of the a class</span></p>
+          <p><span style="font-weight: 400;">issubclass( ) will check the class is a subclass of another</span></p>
+          <p><span style="font-weight: 400;">The real world example of subclasses are in the Exceptions class. </span></p>
+    </div>
+    </div>
+    <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/fbbf593e34a33944b6d88fbda36dc2e2.js"></script> </span></p></div>
+
+    
+
+
+    
+
+<!--
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p><span style="font-weight: 400;">Well, we have been looking into multiple machine learning concept.. I&nbsp; know we have not covered not even 1% of things that we have to learn, however, I think along with learning machine engineering concepts it is equally important to learn a little bit of software engineering as well as object-oriented programming concepts. This will be like an add on while making your code production-ready. Which I regret not learning earlier..&nbsp;</span></p>
+    </div>
+  </div>
+</div>
+-->
+    
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/bhagya-c/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
