@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Bhagya's Blogs</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background/python.jpeg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Python:OOP</h1>
+            <h2>Chapter 4 Finale</h2>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on May 6, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          
+            
+          <p><span style="font-weight: 400;">In our previous blogs, we have almost covered all the basic stuff. This blog will be a long one but the last one. The main agenda for this blog will be Magic methods and later we will look into Property Decorators</span></p>
+<p><span style="font-weight: 400;"></span><strong>Special Methods or Magic Methods</strong><strong><br /></strong><strong><br /></strong><span style="font-weight: 400;">These are the methods that we can use within the classes. They have some build-in behaviour within python. We are using the same idea to implement operator overloading. For example, if we are using the + operator for integers and strings both act differently based on the input or the instance</span></p>
+<p><span style="font-weight: 400;">If we want to print the instance it will be returning the object itself. And it would be nice if we could see some details also we can do some modifications on the same.</span></p>
+<p><span style="font-weight: 400;">These special methods are always with double underscores and hence they get the name &ldquo;Dunders&rdquo; . Dunder init is the most common special function that we use ( we have already used them). As we mentioned earlier the speciality of the dunders are they will automatically be called when the instances are initiated. Let us look into some more dunders</span></p>
+<ol>
+<li style="font-weight: 400;"><strong>Dunder repr</strong><span style="font-weight: 400;">: Unambiguous representation of the object and this used to debugging and logging</span></li>
+<li style="font-weight: 400;"><strong>Dunder str</strong><span style="font-weight: 400;">: It is a readable representation of the object and it used as a display to the end-user</span></li>
+</ol>
+<p><span style="font-weight: 400;">And another interesting fact if you define repr without having str and then call str it will be returning the results of repr as a fallback.</span></p>
+<p><span style="font-weight: 400;">We can retrieve the results in many formats as in the code. The main idea is that it allows us to change how our instances are displayed and these are the most used as well. There are more functions for arithmetic purposes. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">The + function is doing the backend __add__&nbsp;</span></p>
+<p><span style="font-weight: 400;">For more examples, consider that wherever you add two instances you should get the sum of their pays. Although it is not a good example for the sake of explaining it let us look into how it is done in the code.</span></p>
+<p><span style="font-weight: 400;">&nbsp;As a side note if we return NotImplemented it will not throw an error all of a sudden, but it will fall back to the other instance and if it does not know how to handle it then eventually it wil throw an error</span></p>
+<p><strong>Property Decorators</strong></p>
+<p><span style="font-weight: 400;">This is something really interesting consider our same example and you set a first name last name you created another property email which will add the first and last and with the domain id as given in the codebase. Then you updated the first name alone and try printing all the following variables - first, last and email. Strangely the first got updated but not the email. But the function within the class Fullname also got updated because whenever we use the instance all the functions will get called again and it uses the latest value. How can we fix this problem, easiest way that comes to your mind will be to make the email a function. Yes, it is, but it will crash our code, because before we have been accessing email as an instance variable now we have to modify our code to an email function. To get rid of this we can use the property concept. The idea is adding a property decorator to a function will make it exactly as an instance variable see the code for example&nbsp;</span></p>
+<p><strong>Setter</strong></p>
+<p><span style="font-weight: 400;">&nbsp;Now let us consider more complicated situations where you updated the email and from that, the first and last name should get updated. But as of now, you can&rsquo;t assign values to a function, right? Then what will you do? Make it property will work? Actually no. But after making them a property also add one more decorator called setter then it will work. The decorator name is &ldquo;@property.setter&rdquo; then within that redefine the function and do the actions ( the updations that you want to make) ..Also along you have to pass the parameter that you want to set along with the self-object to the function. Check the example&nbsp;</span></p>
+<p><strong>Deleter</strong></p>
+<p><span style="font-weight: 400;">Deleter property is more or less similar to setter where you can delete the details by accessing them via a property. The idea is whenever you delete things make sure that you assign that instance to a None value</span></p>
+    </div>
+    </div>
+    <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/bcc4bd91ae66b0d0d3414b78ef06429d.js"></script> </span></p></div>
+
+    
+
+
+    
+
+<!--
+  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <p><span style="font-weight: 400;">Well, we have been looking into multiple machine learning concept.. I&nbsp; know we have not covered not even 1% of things that we have to learn, however, I think along with learning machine engineering concepts it is equally important to learn a little bit of software engineering as well as object-oriented programming concepts. This will be like an add on while making your code production-ready. Which I regret not learning earlier..&nbsp;</span></p>
+    </div>
+  </div>
+</div>
+-->
+    
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/bhagya-c/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
