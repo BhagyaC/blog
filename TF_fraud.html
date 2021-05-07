@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Bhagya's Blogs</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Learn Do Share Repeat</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/background/python.jpeg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Explaining a fraud detection model with Cloud AI Platform</h1>
+            <h2>Codelabs Practice series 1</h2>
+            <span class="meta">Posted by
+              <a href="#">Bhagya C</a>
+              on May 7, 2021</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          
+          <p><span style="font-weight: 400;">Hello People, as you all know MLOPS is one of the most interesting areas related to AI/ML research nowadays. In this blog series, we will try to understand what exactly the term means and get to know about how to do some actions related to it. Let us start.</span></p>
+          <p><span style="font-weight: 400;">I was hoping that we are we can train using google Qwik Labs. But it seems like not free anymore. I remember starting some courses there and never completed because of my laziness and I deeply regret those amateur actions. So, please if you guys get any chances like that please do take leverage of them.</span></p>
+          <p><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Hence we left with the option of Google Codelabs. Which is also not so bad in the case of learning stuff.&nbsp;</span></p>
+          <p><span style="font-weight: 400;">Let us look into the problem statement if you want to try these things out feel free to check out google Codelabs as well.</span></p>
+          <p><span style="font-weight: 400;">In this blog what will be encountering is that how to use AI Platform Notebooks to build and train a model. Then understand the model&rsquo;s prediction with Explainable AI SDK. And also in any other real-life problem, we will learn how to address data imbalance too. I have made a previous blog on addressing the same if you have time check that one too <a href = "imbalance.html"> 🔖</a>.</span></p>
+          <p><strong>Defining our problem statement</strong></p>
+          <p><span style="font-weight: 400;">Fraud detection is a subset of anomaly detection where we have to find the odd one from a set of other data. ML comes to play because writing rules will not come to an end unless there is no more outliers (or zeroth day cases). The big challenges of this problem statement are</span></p>
+          <ol>
+          <li style="font-weight: 400;"><span style="font-weight: 400;">Data imbalance: where we have not of true values and very less false values</span></li>
+          <li style="font-weight: 400;"><span style="font-weight: 400;">Explainability: wherever we say this one is an anomaly we should and could explain why so</span></li>
+          </ol>
+          <p><span style="font-weight: 400;">I am trying this using colab and Hence can&rsquo;t use the explainable ai sdk. But I will try to address that in the blog anyway how we can use it and how they perform kind of stuff in the end.</span></p>
+          <p><span style="font-weight: 400;">The steps that I am following the code are as follows:</span></p>
+          <ol>
+          <li style="font-weight: 400;"><span style="font-weight: 400;">Import all the necessary packages</span></li>
+          <li style="font-weight: 400;"><span style="font-weight: 400;">Download the Dataset ( we are using financial fraud dataset available in kaggle )&nbsp;</span></li>
+          </ol>
+          <p><strong>Addressing the data imbalance issue</strong></p>
+          <p><span style="font-weight: 400;">Once you have downloaded the data you can see we have only 1% of fraud example in the data. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">To address this there are many methods available ( which I briefly mentioned in my previous blog) one of them is </span><strong>downsampling</strong><span style="font-weight: 400;">. Here in downsampling instead of taking the entire set of majority data we do random sampling and take a part of it so that the entire fraud data to non-fraud data ratio can be 25:75 from 1:99.</span></p>
+          <p><span style="font-weight: 400;">After addressing the data imbalance issue. </span><strong>Split the data into train and test.</strong><span style="font-weight: 400;"> The different features ( column ) the data are in a different range to address this issue we have to </span><strong>normalise </strong><span style="font-weight: 400;">the data into a common range( if we were using a tree-based algorithm this step is not necessary)&nbsp;</span></p>
+          <p><span style="font-weight: 400;">The next step is also crucial in terms of data imbalance. We know that in our data we have more non-fraud data. Even though we did downsampling we did not go for an equal match because we need to preserve the information, hence we have still the imbalanced data. However, our primary goal is to find the fraud examples hence we have to provide some weights to the fraud class so that our model can understand this is something that we are keener to know about.</span></p>
+          <p><span style="font-weight: 400;">In Keras, there is a &lsquo;class_weight&rsquo; parameter that let us specify exactly how much weight we want to give examples from each class based on how often they occur in the dataset</span></p>
+          <p><span style="font-weight: 400;">Then we moved to the big part of </span><strong>Traning and evaluating the model</strong></p>
+          <p><span style="font-weight: 400;">Here we are using a Keras Sequential model API, which lets us define our models as a stack of layers. There are lots of metric that we need to take care of while training</span></p>
+          <p><span style="font-weight: 400;">We define our model with all parameters and some global parameters and stopping conditions. Hence we set up the model by calling the &ldquo;make_model()&rdquo; then we fit our data to that model which is training. Please keep your eye on training on understanding what all are the metric being calculated and results that we are getting.&nbsp;</span></p>
+          <p><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Once the training is done we can visualise the model metrics. The main metrics that we use to understand the models are precision, accuracy, recall, AOC and loss. I will soon make another blog on understanding these things by looking into the values. ( at least for me I need to have more understanding of what exactly happening)&nbsp;</span></p>
+          <p><span style="font-weight: 400;">From the result, we can see that we have considerably good results with 85% accuracy. And which is good. If you feel like something is missing or not satisfied with what happening inside. Then hopefully the new blog will address that issue.</span></p>
+          <p><span style="font-weight: 400;">Also in some later blogs, I will do a continuation of this one to learn how to tune these parameters that we defined earlier and improve our model performance.</span></p>
+          <p><span style="font-weight: 400;">Explainable SDK</span></p>
+          <p><span style="font-weight: 400;">As I said I could not test it out myself but I am adding the code snippets here and we will explore these in future</span></p>
+          <p><span style="font-weight: 400;">First,&nbsp; we will save our model. And we have to create the metadata of the model that we created to pass that into our SDK</span></p>
+          <p><span style="font-weight: 400;">Check our the code for more details and this is a wrap for our blog and as I promised I will be back with more explanations&nbsp;</span></p>
+    </div>
+    </div>
+    <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/39184c443cac8c59ff1aeac95238ed08.js"></script> </span></p></div>
+
+    
+
+
+    
+
+
+
+    
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/BhagyaC4">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/BhagyaC/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/bhagya-c/">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; Bhagya's Website 2021</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
