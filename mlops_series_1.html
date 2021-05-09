@@ -56,11 +56,11 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
-            <h1>Python:OOP</h1>
-            <h2>Chapter 1</h2>
+            <h1>MLOps: Introduction</h1>
+          
             <span class="meta">Posted by
               <a href="#">Bhagya C</a>
-              on May 3, 2021</span>
+              on May 8, 2021</span>
           </div>
         </div>
       </div>
@@ -72,49 +72,41 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <p><span style="font-weight: 400;">Well, we have been looking into multiple machine learning concept.. I&nbsp; know we have not covered not even 1% of things that we have to learn, however, I think along with learning machine engineering concepts it is equally important to learn a little bit of software engineering as well as object-oriented programming concepts. This will be like an add on while making your code production-ready. Which I regret not learning earlier..&nbsp;</span></p>
-
-<p><span style="font-weight: 400;">Anyway, as someone said in the past &ldquo; BETTER LATE THAN NEVER&rdquo;. So let us stop procrastinating any longer and look into some basics. Also, I wanted to add a series of algorithmic concepts which we can do in some other series blogs 🤪.</span></p>
-
-<p><span style="font-weight: 400;">As I mentioned in the title, let us look into some Object-Oriented Programming Concepts for Python.</span></p>
-
+          <p><span style="font-weight: 400;">MLOPS in google clouds</span></p>
+<p><span style="font-weight: 400;">Recently Coursera released their new series on MLOps fundamentals and this blog series will be my learning from the particular course. I will be adding screenshots, images and colabs with the series and Happy learning people!</span></p>
+<p><span style="font-weight: 400;">In MLOps ( which is a very new topic for me as well) there are a lot of terms that seems very overwhelming to me&nbsp;</span></p>
+<p><strong>Why and When to employ MLOPS</strong></p>
+<p><span style="font-weight: 400;">This is the most basic thing that we have to learn regarding any project. Rather than learning a lot of theory about something. The first and foremost thing that we need to understand is what and where and why we need this. It will not only help us to understand the idea better but also it will help us to memorise the things that we learned.</span></p>
+<p><span style="font-weight: 400;">First, let us try to understand the whole picture. That means from writing a code to implementing it and then to scale. The main caveats for data scientists are keeping track of all the models in prod, the values of hyperparameters selected and the matrix that they are evaluating. Or in simple terms, they have been trying a plethora of solutions and they finding it hard to keep track of which one was the best and which one was the worst and which combination. Confusing right?</span></p>
+<p><span style="font-weight: 400;">So reproducibility is the biggest challenge. The productionalising is very difficult unless the code is reproducible. As we know we need to update the production regularly as the new data comes in. If the code is reproducible the traceability is also increasing.</span></p>
+<p><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Although in an AI Engineer&rsquo;s point of view for me the model architecture was more like training-&gt; deployment-&gt; production-&gt; newdata+ prediction. But unlike what I learn so far, the operations point of view( operationalizing a model) contains balancing time, resources and quality throughout the whole system. </span><span style="font-weight: 400;">How do you reduce the time between analyzing the problem, creating the models and deploying the solution, while maintaining the quality of the output? In software engineering, this approach called DevOps. We can borrow the term in machine learning and call it MLOps</span></p>
+<p><strong>ML Life Cycle</strong></p>
+<p><span style="font-weight: 400;">The main goal of MLOps is a balanced process for managing the resources, data, code, time, quality to achieve the business objective. Some of them are inherited from DevOps. The version code management system using Continous Integration. Followed by Continuous Delivery [ Build, Test and Release] if there is no CD then the product will be never ready to release. It can be done manually or automatically. All of these are imp facets of MLOps too along with Data. In MLOps along with CI and CD, there will be CT.</span></p>
+<a href="#">
+  <img class="img-fluid" src="img/mlops/1.png" alt="">
+</a>
+<p><span style="font-weight: 400;">CT includes Data schemas and models along with some important concept ML-like continuous monitoring, Pipeline creation, and serving the model. The main challenge is &ldquo;Money&rdquo;. Because most of the time it is very expensive. The integrated ML systems, incorporate technical debt.&nbsp;</span></p>
+<p><span style="font-weight: 400;">The entire project is experimental in nature as we know, along with testing and deployment and complexity. And another important thing is model decay along with the technology shift. We need to set up a feedback system to alert us when there is a big shift in data.</span></p>
+<p><strong>MLOps Architecture</strong></p>
+<p><span style="font-weight: 400;">The important phases are</span></p>
 <ol>
-<li><strong> Classes and Instances</strong></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Discovery phase: Establishing the problem, Data exploration - the size of the data and availability&nbsp;</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Algorithm Selection: How to implement and deploy the solution</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Development Phase: Preprocessing ( Data pipeline and Feature engineering), build and evaluate model ( with multiple iterations), Result. But sometimes at this stage, we have to go to step 2 to select new algorithms</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Deployment: operational model, monitor ( data drifts and signalling), where to deploy and what is the most cost-effective manner</span></li>
 </ol>
-
-<p><span style="font-weight: 400;">&nbsp;The reason for using classes not only in python but in most modern programming languages is that it helps us to logically group our data and function and increase their reusability.</span></p>
-
-<p><span style="font-weight: 400;">Let us consider an example of a company if we have common functions and characteristics for each of them then it will be easier for us to manage them as well as deal as the number of employees in the company increases.</span></p>
-
-<p><span style="font-weight: 400;">Let us try creating some employee class then</span></p></div>
+<a href="#">
+  <img class="img-fluid" src="img/mlops/2.png" alt="">
+</a>
+<p><span style="font-weight: 400;">And there are multiple maturity levels of the ML process, If we build and deploy manually this is maturity level 0, if the training phase is automated then it is maturity level 1 and finally if training, validation and deployment is automated then it is maturity level 2.</span></p>
+<p><span style="font-weight: 400;">As we know we all started at Level 0 and the reason that we are learning this course is that we want to improve so let us keep learning. Happy learning peeps!</span></p>
+<p><span style="font-weight: 400;">&nbsp;</span></p>
+</div>
 
     </div>
-    <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/6972d25f4e887cc6b4abfb37bf4abb84.js"></script> </span></p></div>
+    </div>
 
     
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-
-      <strong> 2. Class Variables&nbsp;</strong></li>
-
-     
-      <p><span style="font-weight: 400;">We learned about how to create instance variable and they are unique to instances. As in our code the first and last . But we did not mention about class variables, and let us look into those. </span><span style="font-weight: 400;"><br /></span><span style="font-weight: 400;">Class varialbles are shared among all the instances in the class. Class variable should be same for each instance. Consider our example, our company raise and it should be same for each variable.&nbsp;</span></p>
-      <p><span style="font-weight: 400;">Let us look into the code and understand</span></p>
-      
-        </div>
-  </div>
-  <p><span style="font-weight: 400;"><script src="https://gist.github.com/BhagyaC/7feafb70d5dba1b1e1b1d801f3b6d5f6.js"></script> </span></p></div>
-
-</div>
-  </div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <p><span style="font-weight: 400;">And that is a wrap for our first session please go through the topics and try to implement the examples by yourself. Then next blog will be a continuation and stay tuned</span></p>    </div>
-  </div>
-</div>
 
     
 
