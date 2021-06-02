@@ -1,0 +1,651 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Resource Central: Understanding and Predicting Workloads for Improved Resource Management in Large Cloud Platforms</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5e4fc5ae-aabb-4e2a-9513-9cf5a0d0fbb7" class="page sans"><header><h1 class="page-title">Resource Central: Understanding and Predicting Workloads for Improved Resource Management in Large Cloud Platforms</h1></header><div class="page-body"><h1 id="fca655c6-36a9-47ac-a342-e82c87c77294" class="block-color-yellow_background"><strong>Abstract</strong></h1><p id="3751524a-35e8-40bc-8661-c7fd69c98873" class="">This research paper is based on Microsoft Azure and it gave a detailed study on the variables in the workload prediction especially in the virtual machine environment. It analysed the characteristics of a production virtual machine. </p><p id="46fc46d4-6ee8-4a1c-94df-1fc890519e87" class="">The main idea is to study these characteristics and use the insights to help the provider&#x27;s resource management system. Eg) <mark class="highlight-brown">consistent virtual machine behaviour over time. </mark> Based on the observation</p><p id="97cea4d5-7d99-47ca-ac6d-6f064172934b" class="">Resource central is the product that they created and it learns based on the historical data and predicts the behaviour online and provide feedback to the users using a library Eg) Prediction of oversubscribing servers with over-subscribable VM types retaining VM performance</p><p id="0fc30a15-0808-4044-a67b-8f73ecac4856" class=""><strong>They used VM traces to evaluate that the predictions increased the utilisation and prevent the physical resource exhaustion</strong></p><h1 id="0e10a927-0ce2-49e6-b9c2-11f2fecd1e00" class="block-color-yellow_background">Introduction</h1><h3 id="012a9545-184a-440e-8612-e0fc8d42a983" class="">Motivation</h3><ul id="7dfac68c-7bf8-4247-add8-96d342140d36" class="bulleted-list"><li>Usage of cloud computing these days and booming of service providers like Microsoft Azure, AWS, GCP</li></ul><ul id="b5790116-e4d2-4e7c-b160-2bc389570991" class="bulleted-list"><li>More features for better performance is the key for competition</li></ul><ul id="c4a2ff2c-9827-4e0d-885f-ece3b933e423" class="bulleted-list"><li>Having new features without having too much datacenter costs</li></ul><ul id="36c5d13b-912c-4c79-b553-5d77a5e79866" class="bulleted-list"><li>The provides has different type of workloads- internal services and external customers on the same shared datacenter</li></ul><ul id="51bec809-5ea2-45b2-97ed-7b7c8821e065" class="bulleted-list"><li>A feature with good performance, availability , reliability, scalability without complex architecture and much cost is challenging</li></ul><ul id="a99b774b-920f-4e82-8eb0-d1180d6bf92c" class="bulleted-list"><li>The true characteristic of the workload in cloud env is still unclear</li></ul><ul id="74074183-e730-4249-937f-eb59abc81ed1" class="bulleted-list"><li>No prior study on lifetime (time between creation and termination)</li></ul><ul id="2c763a5b-9871-4415-9804-947ba1ecacb3" class="bulleted-list"><li>resource consumption distribution of these providers production VMs</li></ul><ul id="3c15db85-cd2a-430d-875a-c2f206c5cb35" class="bulleted-list"><li>The till date researches are not focused on VMs in large cloud providers </li></ul><ul id="a51bcd86-9d82-4462-8afd-a67803faa8c0" class="bulleted-list"><li>I<strong>dea 1: </strong> If accurately predicting resource utilisation at VM deployment time would allow resource- contention- aware and also can evaluate the need for VM migration</li></ul><ul id="d07f111e-bfca-4225-b70f-9eeaf2945295" class="bulleted-list"><li>I<strong>dea 2: </strong> If runtime lifetime can be predicted accurately, it will support the health management system to predict and can have a server maintenance without VM migration or downtime</li></ul><ul id="9d0913b1-5f8e-4593-afd0-f643c9f504f7" class="bulleted-list"><li>Main idea is <strong> Prediction based resource management</strong></li></ul><h3 id="9c9291bf-5031-4683-ae2e-b0385916aeef" class="">Our work</h3><ul id="d4826fd7-72f3-45a3-9ff9-6a58cede4ba0" class="bulleted-list"><li>Analysis of azure VM workload, including distribution of VM&#x27;s size, lifetime, resources, consumption, utilisation pattern and deployment size. </li></ul><ul id="0599d597-5bff-4120-8adb-9ce6f9e31d29" class="bulleted-list"><li>Learning: VM behaviour is consistent over multiple lifetimes - hence we can use the old data to predict the future behaviour  </li></ul><ul id="c73f5393-04e0-461e-9313-0a17f6911fd7" class="bulleted-list"><li>Used ML algorithms to predict the values online</li></ul><h3 id="7e6e6767-0a95-4bc4-83a7-aa3614735c4d" class="">Related works</h3><p id="4c628253-cd0d-4164-96c8-754355d85749" class="">characterisation of VM workloads - user patterns and economics of public cloud - focused on resource demand volatility and pricing</p><p id="580bb0ba-b546-445a-9424-18c7e187c370" class="">Google cloud on bare metal container workloads </p><ul id="34a41972-2524-41bc-8a35-d846c166132f" class="bulleted-list"><li>Google&#x27;s previous search is entirely different because it only focuses on public clouds - in containers, they likely to live longer, produce lower resource utilization and be deployed in smaller numbers. where the cloud providers must encapsulate their customers&#x27; workload using VMS which incorporates more overheads. </li></ul><ul id="a253cb96-4337-46a9-8525-87388b821517" class="bulleted-list"><li>For example - there is a Map reduce job, if they are using VMs they will create a bunch of VMs for all tasks and they can only remove them once the all the tasks are completed. But, in containers each map and reduce job will get each containers  which can be accurately sized for the tasks</li></ul><ul id="a86606ac-e065-411f-a86d-d68d246f57be" class="bulleted-list"><li><strong>Machine learning and prediction serving systems: </strong>There are many machine learning algorithms available ( framework) this paper is introducing a new novel approach TLC ( internal microsoft framework) with many learning algorithms</li></ul><ul id="567d70a7-c371-4d3b-afdb-1c218b6e2c14" class="bulleted-list"><li>A add on is here the RC caches the prediction results, model, and feature data on the clinet side. This approach enables the system to operate even when the data store of the connectivity to it is unavailable</li></ul><ul id="2e478644-3929-47d1-8618-b86d7f6bb4a9" class="bulleted-list"><li><strong>Predicting cloud workloads: </strong>This paper predict multiple workload behaviours- source demand, resource utilization, job/task length for provisioning or scheduling purposes</li></ul><ul id="dda62ab0-7441-4fc3-b226-00d730ce9c19" class="bulleted-list"><li>Broader set of VM behaviours( lifetimes, maximum deployment sizes, and workload classes </li></ul><ul id="2888ab9c-241c-4d81-9714-d9061126cab4" class="bulleted-list"><li>Purposes - health management and power capping</li></ul><ul id="1a0f011b-a823-477a-9071-35caa190b2f6" class="bulleted-list"><li><strong>Prediction based scheduling: </strong>The research on task/container or VM scheduling is too tricky, albeit there are many existing researches - many of them ofr resource usage or performance interference and they are not practical for large provider</li></ul><ul id="949af05b-21c6-4cf3-9073-f7c3483b8bdd" class="bulleted-list"><li>And there are challenges as we discussed below. This paper&#x27;s approach is to propose changes to azure&#x27;s Vm scheduler that leverage predictions of long-term high percentile resource usage to implement oversubscription in a safe and practical manner</li></ul><h1 id="1988962c-893f-479f-8ebb-102b31e22d91" class="block-color-yellow_background">Characterising cloud VM workloads</h1><h3 id="4c7bc7b6-8da9-4f9b-a199-8677400220e3" class="">VM Type</h3><h3 id="2f26ee01-5b6c-4df5-8cde-e8b6f73789a0" class="">Virtual resource usage</h3><h3 id="a3adee17-4f44-4b70-9e5c-40b3b2c7b39e" class="">VM size</h3><h3 id="582207e8-e93b-4a71-9de6-fde51f1fc09b" class="">Maximum deployment Size</h3><h3 id="a2524c08-3d2e-417d-878e-ca0b43fe6bff" class="">VM lifetime</h3><h3 id="828c5c87-52c1-4a7f-a25d-9e6ebfdd4a53" class="">Workload class</h3><h3 id="69c89f2d-27ed-42c6-838a-754ff19e30ce" class="">VM inter-arrival times</h3><h3 id="780f6ccb-385f-4d6e-a630-b89a5e163c0b" class="">Correlation between metrics</h3><p id="86ac26f6-f612-45fe-b9dc-db4603157f28" class="">
+</p><h1 id="195929d6-c782-48a7-85f1-572b2d1cecf5" class="block-color-yellow_background">Resource Central</h1><p id="ce25f5b3-1331-4b3c-8ef6-e60f36d44e01" class="">We have noticed that there are several VM behaviours and metrics related to resource management and the potential benefits of predicting them accurately. Which mean as VM characteristics we can find a set of features and each of them contributes to different use cases. If we can predict each of them it can be used for multiple use cases. </p><p id="a9fc4076-0380-47a4-8b8f-f119b400e613" class="">At this point RC predicts the behaviour of VM, but it can be used to predicting or learning server effects as well as hardware failure.</p><h2 id="68431553-05dc-4965-861a-83c99bcced6e" class="">RC use cases</h2><ol id="5594c913-cacf-4c71-a83d-f5fe794106c7" class="numbered-list" start="1"><li><strong>SMART VM SCHEDULING:  </strong>Whenever a new task comes and we don&#x27;t have to select the server on a blind note, instead we can consult the RC which will predict the resource utilisation, with this info they can decide how much disk we want to allocate so that there is no chance of resource exhaustion in oversubscribed servers</li></ol><ol id="2e10ab1e-95d7-47bf-b8eb-efb98b8dd9cc" class="numbered-list" start="2"><li><strong>SMART CLUSTER SELECTION</strong>: It can use the prediction of maximum deployment size, with this info they can have enough resources</li></ol><ol id="3f6d09a0-44e2-4cec-ad36-fcc05a4eeacc" class="numbered-list" start="3"><li><strong>SMART POWER OVERSUBSCRIPTION AND CAPPING</strong>: When there is a power emergency use the prediction of VM workload interactivity before distributing the power around the servers and do the distribution in a more effective manner</li></ol><ol id="c89b5d7a-505e-4d34-8120-6cdbec8eba2f" class="numbered-list" start="4"><li><strong>SCHEDULING THE SERVER MAINTENANCE: </strong>Predict the lifetime of the server and can use that value to predict the expected maintenance. </li></ol><ol id="c94fb5ce-c3ff-45ec-bfed-a5f9596878f5" class="numbered-list" start="5"><li><strong>RECOMMENDING VM AND DEPLOYMENT SIZES: </strong>The cloud platform could provide a server to its customers that recommends the appropriate VM size and number of VMs at the time of each deployment.- prediction of workload class and resource utilisation</li></ol><p id="c7a203dd-57b1-42f7-8199-8f7540651d2e" class="">In this paper only the first case is added as a case study and give accuracy of range .<strong>8-.9</strong></p><h1 id="4f3eabff-b5c5-4b14-8352-3191f904d2b7" class="block-color-yellow_background">Conclusion</h1><p id="f900c96a-9d3d-4c65-9b76-43e7f2637926" class="">The proposed RC is a well-put-together system for generating, storing, and efficiently using the prediction of these characteristics. And can make use of more machine learning algorithms to efficient prediction serving systems</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f474ff36-c8df-4995-9411-5d074e4cf380"><div style="font-size:1.5em"><span class="icon">⛔</span></div><div style="width:100%"><strong>Challenges Addressed:
+- Unavailability of VM workload characteristics data
+-</strong><strong> offline profiling is infeasible - data will be only available when VM is in production</strong><strong>
+- Online profiling: hard to determine an arbitrary VM&#x27;s representation behaviour
+- Application-level monitoring: It needs input from the application
+- Live migration: content resources until they are available - also cause workload traffic out-bursts
+- To guarantee within-server performance isolation across, VM&#x27;s we need a mechanism for interference detection( hardware counter) </strong></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="3062ee16-f2b2-4fbf-8434-938a0d76f010"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Research Questions Addressed:
+- Analysis of VM workload characteristics
+- Predicting behaviour on historical data ( Resource central)
+- Making sure that the performance is not compromised due to the new techniques
+- Creating new techniques without having too much data centre overhead</strong></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c7c9ef16-939a-4e7d-9ad7-e615dd7fec76"><div style="font-size:1.5em"><span class="icon">🛠</span></div><div style="width:100%"><strong>Implementation Methods
+- Random Forest
+- Extreme Gradient Boosting Tree</strong></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9a63fdf3-f1bd-4e18-9176-fdee9006a30c"><div style="font-size:1.5em"><span class="icon">⚙</span></div><div style="width:100%"><strong>Evaluation Methods
+- Accuracy
+- Precision
+- Recall
+</strong></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="9e84ca0f-a900-4971-a7e1-a0cd329c1ddf"><div style="font-size:1.5em"><span class="icon">📖</span></div><div style="width:100%"><strong>Datasets
+
+Microsoft Azure: VM workloads for 3 months including 3rd party VMs:https://github.com/Azure/AzurePublicDataset
+
+Google cloud: A month-long trace of 12k bare-metal servers  first-party container-based workloads: https://github.com/google/cluster-data
+
+</strong></div></figure><figure id="01f36f13-0492-4272-80d5-455c87e08189"><a href="https://github.com/Azure/AzurePublicDataset" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Azure/AzurePublicDataset</div><div class="bookmark-description">This repository contains public releases of Microsoft Azure traces for the benefit of the research and academic community. There are currently two classes of traces: The first class contains two representative traces of the virtual machine (VM) workload of Microsoft Azure collected in 2017 and 2019.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/Azure/AzurePublicDataset</div></div><img src="https://opengraph.githubassets.com/7961db4443a57b5c065b9cca41dd66d2032cc785f9fa9f4b828fdab42e65a970/Azure/AzurePublicDataset" class="bookmark-image"/></a></figure><figure id="62db1627-c814-4f57-ae7a-b92a81085146"><a href="https://github.com/google/cluster-data" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">google/cluster-data</div><div class="bookmark-description">This repository describes various traces from parts of the Google cluster management software and systems. Please join our (low volume) discussion group, so we can send you announcements, and you can let us know about any issues, insights, or papers you publish using these traces.</div></div><div class="bookmark-href"><img src="https://github.com/favicon.ico" class="icon bookmark-icon"/>https://github.com/google/cluster-data</div></div><img src="https://opengraph.githubassets.com/e9a6752066c7e9f3be73bf24222c86533d01dd443e061226de2676c3c67e9219/google/cluster-data" class="bookmark-image"/></a></figure><figure id="2c58be39-4591-4b8c-b699-72acd60f24a9" class="link-to-page"><a href="https://www.notion.so/2c58be3945914b8cb69972acd60f24a9">Topic I have to revisit</a></figure><h3 id="119333f3-0986-424b-b0bd-ed0cb7338bd4" class=""><mark class="highlight-gray_background"><strong>Some links to refer</strong></mark></h3><figure id="10bb3918-a18f-4f88-9d43-55dec9bb212d"><a href="https://www.forbes.com/sites/louiscolumbus/2015/01/24/roundup-of-cloud-computing-forecasts-and-market-estimates-2015/?sh=11c0d47fdb7a" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Roundup Of Cloud Computing Forecasts And Market Estimates, 2015</div><div class="bookmark-description">Global SaaS software revenues are forecasted to reach $106B in 2016, increasing 21% over projected 2015 spending levels. A Goldman Sachs study published this month projects that spending on cloud computing infrastructure and platforms will grow at a 30% CAGR from 2013 through 2018 compared with 5% growth for the [...]</div></div><div class="bookmark-href"><img src="https://i.forbesimg.com/48X48-F.png" class="icon bookmark-icon"/>https://www.forbes.com/sites/louiscolumbus/2015/01/24/roundup-of-cloud-computing-forecasts-and-market-estimates-2015/?sh=11c0d47fdb7a</div></div><img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fblogs-images.forbes.com%2Flouiscolumbus%2Ffiles%2F2015%2F01%2FImage-Cisco-SaaS-IaaS-PaasS-Results.jpg" class="bookmark-image"/></a></figure></div></article></body></html>
